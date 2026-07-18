@@ -1,4 +1,4 @@
-% This is a template for Ph.D. dissertations in the UCI format.
+% This is a template for dissertations and theses in the UCI format.
 % 
 % All fonts, including those for sub- and superscripts, must be 10
 % points or larger.  Recommended sizes are 14-point for chapter
@@ -9,36 +9,67 @@
 % Notes: Add short title to figures, sections, via square brackets,
 % e.g. \section[short]{long}.
 %
+
+% This block below must appear before \documentclass.
+% It enables LaTeX’s PDF tagging support and sets accessibility-related PDF metadata.
+\DocumentMetadata{
+    tagging=on, % turns on tagged PDF output; this must be on
+    pdfstandard=ua-2, % declares PDF/UA-2 as the target accessibility standard
+    lang=en-US % sets the document language for PDF readers
+}
+% Check LaTeX Tagging Project’s guidelines for more details: https://latex3.github.io/tagging-project/documentation/usage-instructions
+
+
+
+% ==================================================
+% Start of preamble
+% ==================================================
 \documentclass[12pt,fleqn]{ucithesis}
 
 % A few common packages
 \usepackage{amsmath}
+\usepackage{unicode-math} %Cannot be run with pdftex. only works with LuaLaTeX
+%\PassOptionsToPackage{
+%    showtagging=true, activate=true
+%}{tagpdf}
+%\usepackage{tagpdf}
+\usepackage{xcolor}
+\usepackage{comment}
 \usepackage{amsthm}
 \usepackage{array}
 \usepackage{graphicx}
-\usepackage{natbib}
+\usepackage[numbers]{natbib} % use [round] for parenthetical. [numbers] for numbered references.
+\usepackage{bibentry}  % for putting bib entry in VITA
 \usepackage{relsize}
 \usepackage[titletoc]{appendix}
 
 % Some other useful packages
-\usepackage{caption}
-\usepackage{subcaption}  % \begin{subfigure}...\end{subfigure} within figure
+
+%% caption and subcaption packages are not supported in tagging project yet, as of July 7, 2026. These packages do not impact accessibility, but it creates errors in Overleaf.
+%\usepackage{caption}
+%\usepackage{subcaption} 
+
 \usepackage{multirow}
-\usepackage{tabularx}
+\usepackage{tabularx} % compatible
+\usepackage{parskip} %% <-- added % compatible
 
-% Uncomment the following to attempt to enforce Type 1 or TrueType 
-% fonts. ProQuest does not want the type 3 fonts used by default as
-% of Dec. 2019 - see 
-% https://support.proquest.com/articledetail?id=kA01W000000k9o2SAA . 
-% If you are unable to embed fonts such as 'Zapf Dingbats' or 
-% 'Symbol', try using raster images (.jpg or .png) instead of vector 
-%images (.pdf or .eps).
-% \usepackage[T1]{fontenc} 
+% If you are unable to embed fonts such as 'Zapf Dingbats' or 'Symbol', try using raster images (.jpg or .png) instead of vector images (.pdf or .eps).
+% \usepackage[T1]{fontenc} %compatible with tagging project
 
-% plainpages=false fixes the "duplicate ignored" error with page counters
+
+%% for pdf tagging
+\PassOptionsToPackage{
+    pdfencoding=auto,
+    pdfusetitle=true,
+    bookmarks=true,
+    pdfpagelabels=true
+}{hyperref}
+
 % Set pdfborder to 0 0 0 to disable colored borders around PDF hyperlinks
 \usepackage[plainpages=false,pdfborder={0 0 0}]{hyperref}
 
+
+% Note: algorithms package has not been tested with tagging, but it is currently incompatible with the tagging project as of July 7, 2026. algorithmic package is compatible.
 % Uncomment the following line to use the algorithm package,
 % which provides an algorithm environment similar to figure and table
 % ("\begin{algorithm}...\end{algorithm}"). A list of algorithms will
@@ -47,18 +78,16 @@
 % algorithmic).
 %\usepackage{algorithm}
 
-% Uncomment the following line to enable Unicode support. This will allow you
-% to enter non-ASCII characters (such as accented characters) directly without
-% having to use LaTeX's awkward escape syntax (e.g., \'{e})
-% NOTE: You may have to install the ucs.sty package for this to work. See:
-% http://www.unruh.de/DniQ/latex/unicode/
-%\usepackage[utf8x]{inputenc}
+
 
 % Uncomment the following to avoid "widowing", where page breaks cause
 % single lines of paragraphs to float onto the next page (this is not
 % a UCI requirement but more of an aesthetic choice).
 %\widowpenalty=10000
 %\clubpenalty=10000
+
+
+
 
 % Modify or extend these at will.
 \newtheorem{theorem}{\textsc{Theorem}}[chapter]
@@ -75,12 +104,10 @@
 	pdfsubject={\Degreefield},
 }
 
-% Uncomment the following to have numbered subsubsections (by default
-% numbering goes only to subsections).
-%\setcounter{secnumdepth}{4}
+% Uncomment the following to have numbered subsubsections (by default numbering goes only to subsections (3.1.1)).
+%\setcounter{secnumdepth}{4} % makes it go to the paragraph heading, like 3.1.1.1.1
+%\setcounter{secnumdepth}{3} % makes it number up to the subsubsection 3.1.1.1
 
-% Formats URLs in the same way as the main text (i.e. not monospaced).
-\urlstyle{same}
 
 % Set this to only select a subset of the includes directives below.
 % Very handy to speed up compilation if you're working on a certain
@@ -88,37 +115,65 @@
 % even for non-included files.
 %\includeonly{chapter1}
 
+% ========================================
+% End of preamble; Start of document body
+% =========================================
 \begin{document}
+
 
 % Preliminary pages are always loaded (TOC, CV, etc.)
 \preliminarypages
 
+
+% NOTE: All text is double spaced. All text and hyperlinks must be the same font, same font size (10-12pt), and in black colored text. All text must be the same justification, like left justified or fully justified. All text, figures/tables, captions, and equations must fit within the 1-inch margins.
+% After your Abstract, the page numbers reset at 1, 2, 3.
+
+
 % Include the different components of your thesis, in separate files.
 % Using \include allows you to set \includeonly above.
-\include{chapter1}
-%\include{chapter2}
+\include{Chapter1}
+\include{Chapter2}
 % ... and so on
 
-% These commands fix an odd problem in which the bibliography line
-% of the Table of Contents shows the wrong page number.
+
+% This command ensures the bibliography line of the Table of Contents shows the correct page number.
 \clearpage
-\phantomsection
 
-% "References should be formatted in style most common in discipline",
-% abbrv is only a suggestion.
+
+% Choose what to call the bibliography section: "Bibliography" or "References".
+% Default is "Bibliography".        
+\bibliographyname{Bibliography} 
+
+% Single space each entry.
+\begin{spacing}{1}    
+
+% References should be formatted in style most common in discipline
+%Work with your faculty advisor to determine your citation style (Chicago, APA, MLA.) – any style is accepted, just be consistent.
+% abbrv is a suggestion.
+% ACM-Reference-Format is an option for scholars who publish in ACM venues; that reference-format file is available separately (not bundled with this template). Other venues may use other formats.
 \bibliographystyle{abbrv}
-\bibliography{thesis}
+\bibliography{references}
+\end{spacing}    
+% You may have one all-encompassing Reference section at the end of your paper, or individual Reference sections at the end of each chapter. Choose one.
+% If any chapter of your dissertation is a reproduction of a previously published article, that article must be included in the Reference section.
 
-% The Thesis Manual says not to include appendix figures and tables in
-% the List of Figures and Tables, respectively, so these commands from
-% the caption package turn it off from this point onwards. If needed,
-% it can be re-enabled later (using list=yes argument).
-\captionsetup[figure]{list=no}
-\captionsetup[table]{list=no}
+
+% The Thesis Manual says not to include appendix figures and tables in the List of Figures and Tables, respectively, so these commands from the caption package turn it off from this point onwards. If needed, it can be re-enabled later (using list=yes argument).
+%\captionsetup[figure]{list=no}
+%\captionsetup[table]{list=no}
+
+
+
+%% Overleaf tagging note: putting these here causes an issue with how the captions interact with the LOF/LOT contents pages. causes warnings
+% The warnings come from the caption package's \addcontentsline{lof/lot} call interacting with tagpdf 0.99q
+
+
 
 % If you have an appendix, it should come after the references.
-\begin{appendices}
 \include{appendix}
-\end{appendices}
+
 
 \end{document}
+% =========================================
+% End of document body
+% =========================================

@@ -1,0 +1,31 @@
+\chapter{Introduction}
+% the word introduction should be a H1 or H2?
+% the "\section{Background}" is autotagged as H2
+
+
+This is an example using the \LaTeX{} template for UCI theses and
+dissertation documents. 
+
+NOTE: All text is double spaced. All text and hyperlinks must be the same font, same font size (10-12pt), and in black colored text. All text must be the same justification, like left justified or fully justified. All text, figures/tables, captions, and equations must fit within the 1-inch margins. 
+After your Abstract, the page numbers reset at 1, 2, 3.
+
+
+See the UCI Thesis/Dissertation Manual for more information \cite{uci_thesis_manual}.
+
+
+\section{\LaTeX{} Tagging Project}
+
+This template uses automatic tagging support from the \LaTeX{} Tagging project \cite{latex_tagging_instructions}, an ongoing effort by the \LaTeX{} Project to make \LaTeX{}-generated PDFs accessible by default. PDF tags describe the logical structure of the document (e.g., headings, lists, tables, figures, links, etc.), which allows assistive technologies and other tools to interpret the content meaningfully, rather than treating the document as a flat stream of text. The project is building tagging support directly into the \LaTeX{} kernel and core packages, so that much of the document structure can be tagged automatically. Authors still need to provide semantic and accessibility information where needed. See \autoref{sec:chapter-2} for details.
+
+For auto tagging to work correctly, use \TeX{} Live 2025 or newer. For the compiler, Lua\LaTeX{} is recommended, as it has the most complete tagging support. pdf\LaTeX{} also works with auto tagging but has some limitations. In Overleaf, you can configure the \TeX{} Live version and compiler under Settings \textrightarrow\ Compiler.
+
+Note that while \LaTeX{} tagging support is increasingly capable, the project is still under active development. Most commonly used packages are compatible with auto-tagging, but not all. Before adding a new package, check the Tagging Status of \LaTeX{} Packages and Classes \cite{latex_tagging_status}, which is updated as support evolves.
+
+% previous latex template \cite{uci-thesis-latex}
+
+
+%%% Local Variables: ***
+%%% mode: latex ***
+%%% TeX-master: "thesis.tex" ***
+%%% End: ***
+

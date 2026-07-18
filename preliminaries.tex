@@ -1,151 +1,187 @@
+%% This is tagged in the PDF as type "Title". This is compliant with PDF 2.0 standards. some UIs might not recognize this tag, but it's correct and all other H1s can nest under the title.
 \thesistitle{Title of the Thesis}
 
 %"Dissertation" for PhD, "Thesis" for master's
-\documenttitle{Dissertation}
+\documenttype{Dissertation}
 
 \degreename{Doctor of Philosophy}
 
-% Use the wording given in the official list of degrees awarded by UCI:
-% http://www.rgs.uci.edu/grad/academic/degrees_offered.htm
-\degreefield{Computer Science}
+%NOTE: make sure your degree title is from this database: https://www.reg.uci.edu/mdsd/
+\degreefield{Informatics}
 
-% This does not have to be the name listed with the UCI Registrar's Office.
-% However, it should match the name you are using when you submit your thesis
-% in ProQuest.
+% Your name as it appears on official UCI records.
 \authorname{Your name}
 
 % Use the full name of each committee member and full title 
 % (e.g. Professor/Associate Professor).
-\committeechair{Professor A}
+\committeechair{[Assistant/Associate/Professor] First Last}
 \othercommitteemembers
 {
   Assistant Professor B\\
   Associate Professor C
 }
 
-\degreeyear{2012}
+\degreeyear{2026}
 
+
+%NOTE: If your dissertation includes any previously published materials, including materials authored or co-authored by you, please list any additional copyrights on those materials here. Some examples are provided below.
+%See the manual at https://guides.lib.uci.edu/gradmanual/copyright for more information
 \copyrightdeclaration
 {
-  {\copyright} {\Degreeyear} \Authorname
+    %% Optional: example with previously published materials
+    Portions of Chapter 2 {\copyright} 2022 American Institute of Physics (AIP Publishing) \\
+    Chapter 3 {\copyright} 2023 Josephine Bruin Publishing \\
+    Photographs in Chapter 4 {\copyright} 2022 Cell Press \\
+    Chapter 5  {\copyright} 2023 Scotty Highlander Publishing \\
+    
+    %must have this line
+    All other materials {\copyright} {\Degreeyear} \Authorname
 }
 
-% If you have previously published parts of your manuscript, you must list the
-% copyright holders; see Section 3.2 of the UCI Thesis and Dissertation Manual.
-% Otherwise, this section may be omitted.
-% \prepublishedcopyrightdeclaration
-% {
-% 	Chapter 4 {\copyright} 2003 Springer-Verlag \\
-% 	Portion of Chapter 5 {\copyright} 1999 John Wiley \& Sons, Inc. \\
-% 	All other materials {\copyright} {\Degreeyear} \Authorname
-% }
+
 
 % The dedication page is optional
 % (comment out to exclude).
+% NOTE: The Dedication page is optional. Any format for justification, spacing, writing style, text size and text font is acceptable for this page; however, all text must fit within the 1-inch page margins. 
+%If you choose not to include a Dedication page, delete this page. The Table of Contents will begin on page ii.
 \dedications
 {
-  (Optional dedication page)
+  (Optional dedication page. Comment out to exclude.)
   
   To ...
 }
 
+%%%%%% Acknowledgments
+%%see manual https://guides.lib.uci.edu/gradmanual/acknowledgments
 \acknowledgments
 {
-  I would like to thank...
-  
-  (You must acknowledge grants and other funding assistance. 
-  
-  You may also acknowledge the contributions of professors and
-  friends.
-  
-  You also need to acknowledge any publishers of your previous
-  work who have given you permission to incorporate that work
-  into your dissertation. See Section 3.2 of the UCI Thesis and
-  Dissertation Manual.)
+
+NOTE: This page is required. In addition to general thanks or acknowledgments, the following information must be acknowledged:
+
+If you have used copyrighted material of your own or others (e.g. if chapters of your thesis or dissertation were previously published elsewhere), you must include a statement to inform the reader that permission has been granted and state the source of the permission. See examples below.
+
+You must acknowledge grants and other funding assistance; include grant numbers if applicable (e.g., U.S. National Science Foundation (NSF) Award \# 0123456). Please list all grant funding in a separate paragraph from your other acknowledgments. See examples below.
+
+For more information see \url{https://guides.lib.uci.edu/gradmanual/acknowledgments}
+
+Examples:
+
+The text of portions of Chapter 2 of this dissertation is an adaptation of the material as it appears in Anteater, P.M., Slug, S.T.B., Triton, K., \& Bear, O.T. (2022). Chemical properties of university mascots. Chemical Physics Reviews, 1(1), 10-11, used with permission from AIP Publishing. The coauthors listed in this publication are Sammy the Banana Slug, Oski T. Bear, and King Triton. Oski T. Bear directed and supervised research which forms the basis for the dissertation.
+
+Thank you to Cell Press for granting permission to use the copyrighted photographs in Chapter 4 of this dissertation.
+
+Financial support was provided by the University of California, Irvine, NSF Grant DEB-8227052 and a MacArthur predoctoral fellowship in International Peace and Security granted by the Social Science Research Council.
 }
 
 
 % Some custom commands for your list of publications and software.
-\newcommand{\mypubentry}[3]{
-  \begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}}p{4.5in}r}
-    \textbf{#1} & \textbf{#2} \\ 
-    \multicolumn{2}{@{\extracolsep{\fill}}p{.95\textwidth}}{#3}\vspace{6pt} \\
-  \end{tabular*}
-}
 \newcommand{\mysoftentry}[3]{
-  \begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}}lr}
-    \textbf{#1} & \url{#2} \\
-    \multicolumn{2}{@{\extracolsep{\fill}}p{.95\textwidth}}
-    {\emph{#3}}\vspace{-6pt} \\
-  \end{tabular*}
+    \textbf{#1} \hfill \url{#2} \\
+    {\emph{#3}} \\[-6pt] %\vspace{-6pt} \\
 }
 
-% Include, at minimum, a listing of your degrees and educational
-% achievements with dates and the school where the degrees were
-% earned. This should include the degree currently being
-% attained. Other than that it's mostly up to you what to include here
-% and how to format it, below is just an example.
+
+%% CV
+%% see the manual: https://guides.lib.uci.edu/gradmanual/vita
+% Include, at minimum, a listing of your degrees and educational achievements with dates and the school where the degrees were earned. This should include the degree currently being attained. Other than that it's mostly up to you what to include here and how to format it, below is just an example.
+%% NOTE: This Vita will be published permanently online. It should not be your CV or Resume that you may be using for employment. It should not contain phone numbers, email addresses, names of references or advisees, or any other information that could be considered private.
 %
 % CV is required for PhD theses, but not Master's
 % comment out to exclude
+
+%% REQUIRED: listing of the author's degrees and educational achievements with dates and the school where the degree was earned. include the degree currently being attained.
+
+%% OPTIONAL: academic or professional employment, publications, presentations, patents, or other scholarly work, awards, or distinctions
+
+%Required only for PhD dissertations.
+%Brief biographical sketch of the candidate; it is not intended to be a comprehensive resume.
+%Includes a listing of the author's degrees and educational achievements with dates and the school where the degree was earned.
+%Includes the degree currently being attained.
+%May include academic or professional employment, publications, presentations, patents, or other scholarly work, awards, or distinctions.
+%Do NOT include personal information such as date or place of birth, addresses (physical or email), phone numbers, marital status, headshots, etc.
+
 \curriculumvitae
 {
+\nobibliography*  % needed once, before any \bibentry call  
+%%% Use the same citation style used in References
 
-\textbf{EDUCATION}
-  
-  \begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}}lr}
-    \textbf{Doctor of Philosophy in Computer Science} & \textbf{2012} \\
-    \vspace{6pt}
-    University name & \emph{City, State} \\
-    \textbf{Bachelor of Science in Computational Sciences} & \textbf{2007} \\
-    \vspace{6pt}
-    Another university name & \emph{City, State} \\
-  \end{tabular*}
+%% =============================================================
+%% EDUCATION  (required)
+%% =============================================================
+\prelimsubsection{EDUCATION} 
 
-\vspace{12pt}
-\textbf{RESEARCH EXPERIENCE}
+\textbf{Doctor of Philosophy in Computer Science} \hfill \textbf{2012}\\
+University name \hfill \emph{City, State}\\[6pt]
+\textbf{Bachelor of Science in Computational Sciences}\hfill\textbf{2007}\\
+Another university name \hfill \emph{City, State}
 
-  \begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}}lr}
-    \textbf{Graduate Research Assistant} & \textbf{2007--2012} \\
-    \vspace{6pt}
-    University of California, Irvine & \emph{Irvine, California} \\
-  \end{tabular*}
 
-\vspace{12pt}
-\textbf{TEACHING EXPERIENCE}
+%%%NOTE: Along with education, you may include relevant professional appointments and military assignments. For non-academic positions, you can also include the range of the years appointed for the position. 
 
-  \begin{tabular*}{1\textwidth}{@{\extracolsep{\fill}}lr}
-    \textbf{Teaching Assistant} & \textbf{2009--2010} \\
-    \vspace{6pt}
-    University name & \emph{City, State} \\
-  \end{tabular*}
+%% =============================================================
+%% RESEARCH EXPERIENCE (optional)    
+%% =============================================================
+%\prelimsubsection{RESEARCH EXPERIENCE}
+%\textbf{Graduate Research Assistant}\hfill \textbf{2007--2012} \\
+%University of California, Irvine \hfill \emph{Irvine, California} \\[6pt]
 
-\pagebreak
+%% if adding another experience, duplicate previous two lines and do not leave a new line in between the two experiences
 
-\textbf{REFEREED JOURNAL PUBLICATIONS}
 
-  \mypubentry{Ground-breaking article}{2012}{Journal name}
 
-\vspace{12pt}
-\textbf{REFEREED CONFERENCE PUBLICATIONS}
+%% =============================================================
+%% TEACHING EXPERIENCE (optional)    
+%% =============================================================
+%\prelimsubsection{TEACHING EXPERIENCE}
+%\textbf{Teaching Assistant}\hfill \textbf{2009--2010} \\
+%University name \hfill \emph{City, State} \\
 
-  \mypubentry{Awesome paper}{Jun 2011}{Conference name}
-  \mypubentry{Another awesome paper}{Aug 2012}{Conference name}
 
-\vspace{12pt}
-\textbf{SOFTWARE}
+%% =============================================================
+%% FIELD OF STUDY  (Required)
+%% =============================================================
+%The title of your field of study 
+\prelimsubsection{FIELD OF STUDY}
+Computer Science
 
-  \mysoftentry{Magical tool}{http://your.url.here/}
-  {C++ algorithm that solves TSP in polynomial time.}
+
+
+%% =============================================================
+%% PUBLICATIONS  (OPTIONAL)
+%% =============================================================
+%%% Use the same citation style used in References
+%% List of formatted publication, in alphabetical order, following standard citations requirements.
+%% NOTE: You may include any of your publications (e.g. papers published as part of a conference, while completing your Bachelor’s degree, etc.) 
+\prelimsubsection{PUBLICATIONS}
+
+\bibentry{latex_tagging_status}.
+
+
+%% feel welcome to use bibentry or to format the citations manually using LaTeX format. Example below. 
+
+U. Libraries. (2026). Thesis / Dissertation Formatting Manual (2026).
+
+
+
+%% =============================================================
+%% SOFTWARE  (OPTIONAL)
+%% =============================================================
+%\vspace{10pt}
+%\prelimsubsection{SOFTWARE}
+%\mysoftentry{Magical tool}{http://your.url.here/}{}
+
 
 }
 
 % The abstract was previously limited to a maximum of 350 words, 
 % but the UCI manual at https://etd.lib.uci.edu/electronic/td2e#2.2.1.
 % currently does not indicate that there is any word limit for the abstract
+%as of April 2026 NOTE: The text must be double-spaced. It is recommended that the text be around 350 words in length. Use indent or flush left at the beginning of paragraphs, depending on the style manual you are following. Include a short statement of the problem you studied, a brief exposition of the methods and procedures employed in gathering the data, and a summary of your findings. No graphs, charts, or tables may be included.
 \thesisabstract
 {
   The abstract of your contribution goes here.
+
+  NOTE: The text must be double-spaced. It is recommended that the text be around 350 words in length. Use indent or flush left at the beginning of paragraphs, depending on the style manual you are following. Include a short statement of the problem you studied, a brief exposition of the methods and procedures employed in gathering the data, and a summary of your findings. No graphs, charts, or tables may be included.
 }
 
 
