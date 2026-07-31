@@ -8,6 +8,10 @@
 % Disclaimer: provided without any guarantees.
 %
 % Changelog:
+% Jul 31, 2026: Updated the template to make TOC Page text to an artifact tag, 
+%               which is correct for screen readers. Updated Table 2.2 in Chapter 2 
+%               to include necessary column header tags. Added math DocumentMetadata
+%               tagging setup to support screen readesr. Other misc. text improvements. 
 % Jul 17, 2026: Rewrote the class for PDF/UA-2 accessibility tagging via the
 %               LaTeX tagging project (tagged title page, headings, TOC/LOF/
 %               LOT, chapters, tables, and bibliography). Updated the template 
@@ -15,7 +19,7 @@
 %               2025+ and LuaLaTeX. Renamed \documenttitle -> \documenttype.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ucithesis}[2026/07/17 UCI Thesis class]
+\ProvidesClass{ucithesis}[2026/07/31 UCI Thesis class]
 
 \LoadClassWithOptions{report}
 \RequirePackage[hmargin={1in,1in},vmargin={1in,1in}]{geometry}
@@ -309,6 +313,18 @@
 \renewcommand{\listfigurename}{LIST OF FIGURES}
 \renewcommand{\listtablename}{LIST OF TABLES}
 
+% "Page" column label for the TOC/LOF/LOT/LOA. This is a decorative
+% column heading, not document content, so mark it as a layout
+% artifact. Emitting it explicitly (rather than writing it into the
+% .toc/.lof/.lot files via \addtocontents) makes the semantics clear
+% and produces consistent tagging across compilers, instead of relying
+% on LuaLaTeX's auto-tagger to absorb the written-in text correctly.
+\newcommand{\uci@pagecolumnlabel}{%
+  \tagmcbegin{artifact=layout}%
+  {\raggedleft Page\protect\par}%
+  \tagmcend%
+}
+
 % Redefine tableofcontents - explicitly close the TOC structure
 \renewcommand{\tableofcontents}{%
   \clearpage
@@ -328,8 +344,8 @@
   \tagmcend%
   \tagstructend%
   \vspace{40pt}%
+  \uci@pagecolumnlabel%
   \@starttoc{toc}%
-  \tagstructend% Explicitly close the TOC structure created by latex-lab
 }
 
   \renewcommand{\listoffigures}{%
@@ -351,8 +367,9 @@
     \tagmcend%
     \tagstructend%
     \vspace{40pt}%
+    \uci@pagecolumnlabel%
     \@starttoc{lof}%
-    \tagstructend% Explicitly close the LOF structure
+
 }
 
 \renewcommand{\listoftables}{%
@@ -374,16 +391,14 @@
   \tagmcend%
   \tagstructend%
   \vspace{40pt}%
+  \uci@pagecolumnlabel%
   \@starttoc{lot}%
-  \tagstructend% Explicitly close the LOT structure
 }
 
-% Add "Page" as column title to Table of Contents, List of Figures,
-% List of Tables, and List of Algorithms
-\addtocontents{toc}{{\protect\flushright Page\par}}
-\addtocontents{lof}{{\protect\flushright Page\par}}
-\addtocontents{lot}{{\protect\flushright Page\par}}
-\addtocontents{loa}{{\protect\flushright Page\par}}
+% The "Page" column label is now emitted directly as a layout artifact
+% via \uci@pagecolumnlabel immediately before each \@starttoc (see the
+% TOC/LOF/LOT redefinitions and the LIST OF ALGORITHMS block below),
+% rather than being written into the .toc/.lof/.lot/.loa files here.
 
 \newcommand{\preliminarypages}
 {
@@ -416,6 +431,7 @@
   \tagmcend%
   \tagstructend%
   \vspace{40pt}%
+  \uci@pagecolumnlabel%
   \listofalgorithms
   \tagstructend% Explicitly close the structure
 \fi

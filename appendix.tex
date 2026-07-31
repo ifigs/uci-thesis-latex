@@ -5,23 +5,13 @@
 % Appendix sections, subsections etc should not appear in the table of contents. So set tocdepth to 0 and set it back to 2 at the end. Do this for each appendix.
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 
-Supplementary material goes here. See for instance \autoref{tab:appendix-table}, which does not appear in the List of Tables.
+Supplementary material goes here. 
+
+%Any tables or figures in the appendix do not appear in the List of Tables or the List of Figures.
 
 \section{Example Section}
 
 \subsection{Example Sub Section}
-
-\tagpdfsetup{table/header-rows={1}}
-\begin{table}[h]
-    \caption{Caption}
-    \centering
-    \begin{tabular}{cccc}
-        1 & 2 & 3 & 4\\
-        5 & 6 & 7 & 8\\
-        9 & p & h & z\\
-    \end{tabular}
-    \label{tab:appendix-table}
-\end{table}
 
 
 

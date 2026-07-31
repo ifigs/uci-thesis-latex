@@ -13,7 +13,12 @@
 % This block below must appear before \documentclass.
 % It enables LaTeX’s PDF tagging support and sets accessibility-related PDF metadata.
 \DocumentMetadata{
-    tagging=on, % turns on tagged PDF output; this must be on
+    tagging=on, 
+    % tagging can be set to 'off' for use when drafting, but must be set to 'on' to turn on tagged PDF output
+    % tagging must be on for submitting to the library
+    tagging-setup={
+        math/setup={mathml-SE,mathml-AF}
+    }, % math tagging setup
     pdfstandard=ua-2, % declares PDF/UA-2 as the target accessibility standard
     lang=en-US % sets the document language for PDF readers
 }
@@ -32,7 +37,7 @@
 %\PassOptionsToPackage{
 %    showtagging=true, activate=true
 %}{tagpdf}
-%\usepackage{tagpdf}
+%\usepackage{tagpdf} %https://latex.us/macros/latex/contrib/tagpdf/tagpdf.pdf
 \usepackage{xcolor}
 \usepackage{comment}
 \usepackage{amsthm}

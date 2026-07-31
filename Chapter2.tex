@@ -25,7 +25,7 @@ Make sure to use heading levels in order and avoid skipping heading levels.
 NOTE: Figure captions go below figures and must use the “Caption” style in order to auto-populate a List of Figures. 
 
 NOTE: All images must include alt-text. 
-%To insert alt-text to images, hover over the image > right click > view alt text > input the description for the image
+%To insert alt-text to images in Word, hover over the image > right click > view alt text > input the description for the image
 
 
 
@@ -102,20 +102,26 @@ If the table has multiple header rows, list all header row numbers. For example,
   \label{tab:coordinates}
 \end{table}
 
+If the first column contains row headers, use \verb|\tagpdfsetup{table/header-columns={1}}|. For a table such as a distance matrix that has column headers in the first row and row headers in the first column (e.g., \autoref{tab:city_distance}), combine both settings as \verb|\tagpdfsetup{table/header-rows={1},table/header-columns={1}}|. See the \LaTeX{} code example in  \autoref{tab:city_distance}.
 
-\tagpdfsetup{table/header-rows={1}}
+% compatibility note: If using tabularx package, p and X column types are not compatible with header-columns in TeX 2025. This support will likely be added in future TeX releases. Use other types of columns such as l type if you want to define a header column
+% other non-header columns in the table can be p or X
+\tagpdfsetup{
+    table/header-rows={1},
+    table/header-columns={1}
+}
 \begin{table}[htbp]
 \centering
 \caption{City or Town Distance Matrix}
 \label{tab:city_distance}
-\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3cm}|*{5}{>{\raggedright\arraybackslash}X|}}
+\begin{tabularx}{\textwidth}{|l|*{5}{>{\raggedright\arraybackslash}X|}}
 \hline
 \textbf{City or Town} & \textbf{Point A} & \textbf{Point B} & \textbf{Point C} & \textbf{Point D} & \textbf{Point E} \\ \hline
-Point A & --- &     &     &     &     \\ \hline
-Point B & 87  & --- &     &     &     \\ \hline
-Point C & 64  & 56  & --- &     &     \\ \hline
-Point D & 37  & 32  & 91  & --- &     \\ \hline
-Point E & 93  & 35  & 54  & 43  & --- \\ \hline
+\textbf{Point A} & --- &     &     &     &     \\ \hline
+\textbf{Point B} & 87  & --- &     &     &     \\ \hline
+\textbf{Point C} & 64  & 56  & --- &     &     \\ \hline
+\textbf{Point D} & 37  & 32  & 91  & --- &     \\ \hline
+\textbf{Point E} & 93  & 35  & 54  & 43  & --- \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -123,11 +129,10 @@ Point E & 93  & 35  & 54  & 43  & --- \\ \hline
 
 \section{Math Equations}
 
-\TeX{} Live 2025 can auto tag math equations as “Formula” and attaches the corresponding MathML to the PDF. Compatible PDF viewers, such as Adobe Acrobat Pro, can use this MathML to make equations available to assistive technologies. The generated MathML can be found in the PDF’s attachments panel using Acrobat Pro.
-
+\TeX{} Live 2025 with the LuaLaTeX compiler auto tags math equations as “Formula” and attaches the corresponding MathML to the PDF. Compatible PDF viewers, such as Adobe Acrobat, can use this MathML to make equations available to assistive technologies such as screen readers. Associated MathML files can appear in Acrobat’s Attachments panel.
 $$ \int_1^{12} \frac{x^2}{5 - \sqrt{5}} \,dx $$
 
-We can also try labeling equations.
+Equations can also be numbered with a label.
 \begin{equation}\label{eqn:einstein}
 E=mc^2
 \end{equation}
