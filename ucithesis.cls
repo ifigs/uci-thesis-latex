@@ -8,6 +8,9 @@
 % Disclaimer: provided without any guarantees.
 %
 % Changelog:
+% Nov 9, 2026:  Made \Thesistitle title case rather than all caps, to adhere
+%               to the UCI thesis manual. Improved chapter heading text to not 
+%               hyphenate words as much for longer headings. 
 % Jul 31, 2026: Updated the template to make TOC Page text to an artifact tag, 
 %               which is correct for screen readers. Updated Table 2.2 in Chapter 2 
 %               to include necessary column header tags. Added math DocumentMetadata
@@ -112,7 +115,7 @@
 		% distinct from any heading level.
 		\tagstructbegin{tag=Title}
 		\tagmcbegin{tag=Title}
-		  \MakeUppercase{\Thesistitle} \\
+		  \Thesistitle \\
 		\tagmcend
 		\tagstructend
 		\vspace{0.15in}
@@ -574,7 +577,7 @@
   \tagmcbegin{tag=H1}%
   {\huge\bfseries Chapter \thechapter\par}%
   \vspace{20pt}%
-  {\Huge\bfseries #1\par}%
+  {\Huge\bfseries\raggedright #1\par}% adding raggedright fixes awkward hyphenated line breaks
   \tagmcend%
   \tagstructend%
   \vspace{40pt}%
